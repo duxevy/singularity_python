@@ -1,4 +1,4 @@
-def calculate_taxes(prices: float, tax_rate: float) -> float:
+def calculate_taxes(price: float, tax_rate: float) -> float:
     """
     Функция должна вычислять стоимость товара с учётом налога и возвращать результат (float).
 
@@ -16,4 +16,11 @@ def calculate_taxes(prices: float, tax_rate: float) -> float:
     assert result == 52.5
     ```
     """
-    pass
+    if price <= 0:
+        raise ValueError("Неверная цена")
+    if tax_rate < 0 or tax_rate >= 100:
+        raise ValueError("Неверный налоговый процент")
+
+    tax = price * tax_rate / 100
+    total_price = price + tax
+    return total_price
